@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2uwgf34su0k6"]
+
+[ext_resource type="Script" uid="uid://odpjjxrcitjq" path="res://projectile/explosion.gd" id="1_062bm"]
+[ext_resource type="Texture2D" uid="uid://bkojx8a6p3ixu" path="res://images/projectile/projectile_explode_1.png" id="1_pmqh8"]
+[ext_resource type="Texture2D" uid="uid://b2qu6tt28p0i2" path="res://images/projectile/projectile_explode_2.png" id="2_062bm"]
+[ext_resource type="Texture2D" uid="uid://b366cp3oi2uh5" path="res://images/projectile/projectile_explode_3.png" id="3_e2dl5"]
+[ext_resource type="AudioStream" uid="uid://h5r4fp3o5tju" path="res://sound/explosion.wav" id="5_e2dl5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vq3sn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pmqh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_062bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e2dl5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="explosion" type="Node2D"]
+script = ExtResource("1_062bm")
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vq3sn")
+frame_progress = 0.807062
+speed_scale = 0.5
+
+[node name="explosionTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="explosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_e2dl5")
